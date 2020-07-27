@@ -1,0 +1,43 @@
+#激活指定profile
+#1. 在配置文件中指定 spring.profiles.active=dev
+#2. 命令行：可以在配置的时候，配置传入命令行参数
+#java -jar spring-boot-.......-SNAPSHOT.jar --spring.profiles.active=dev
+#3. 虚拟机参数：-Dspring.profiles.active=dev;(-D是固定写法)
+
+#spring.profiles.active激活对应的配置文件，下面的三个横线"---"代表再起一个文档，相当于document
+server: 
+  port: 8080
+#配置基础路径
+  servlet:
+    context-path: /boot
+    
+spring:
+  profiles:
+    active:
+      - dev
+---
+server:
+  port: 8081
+spring:
+  profiles: dev #指定属于哪个环境
+---
+server:
+  port: 8082
+spring:
+  profiles: prod
+---
+
+
+person:
+    last-name: zhangsan${random.uuid}
+    age: ${random.int}
+    boss: false
+    birth: 2020/12/12
+    maps: {k1: v1, k2: v2}
+    list: 
+      - lisi
+      - zhaosi
+    dog: 
+       name: ${person.hello:hello}
+       age: 2
+    
