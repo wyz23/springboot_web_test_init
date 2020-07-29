@@ -3,21 +3,19 @@
 #2. 命令行：可以在配置的时候，配置传入命令行参数
 #java -jar spring-boot-.......-SNAPSHOT.jar --spring.profiles.active=dev
 #3. 虚拟机参数：-Dspring.profiles.active=dev;(-D是固定写法)
-
+#在启动配置项Program argument:   参数为：--spring.profile.active=dev 就是激活什么环境
 #spring.profiles.active激活对应的配置文件，下面的三个横线"---"代表再起一个文档，相当于document
 server: 
-  port: 8080
+  port: 8080 #默认端口
 #配置基础路径
 #  servlet:
 #    context-path: /boot
-logging:
-  level:
-    com.example.demo: trace
+
     
 spring:
   profiles:
     active:
-      - dev
+      - dev #替换默认端口
 ---
 server:
   port: 8081
@@ -29,7 +27,30 @@ server:
 spring:
   profiles: prod
 ---
+#修改日志级别
+#logging:
+#  level:
+#    com.example.demo: trace
+#以下eclipse没有配置好，不起作用。idea演示好用
 
+#不指定路径在当前项目下生成springboot.log日志
+#可以指定完整的路径，如下：以下的格式全是在properties里写
+#logging:
+#  file: springboot.log
+#在当前磁盘的根路径下创建spring文件夹和里面的log文件夹，使用spring.log作为默认文件
+#logging:
+#  path: /spring/log
+#在控制台输出的日志格式
+#logging:
+#  pattern:
+#    console: %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n
+#指定文件中日志输出的格式 ;  杠5（-5level）表示级别从左显示5个字符宽度, thread线程名，
+#logger{50} 表示logger名字最长50个字符，否则按照句点分割，msg 日志消息， n换行
+#logging:
+#  pattern:
+#    file: %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n
+
+--- 
 
 person:
     last-name: zhangsan${random.uuid}
