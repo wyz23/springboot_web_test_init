@@ -33,6 +33,27 @@
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		<!--  标签 exclusions  排除框架的依赖  -->
+		<!-- 如果要引入其他的框架，一定要把这个框架的默认日志依赖移除掉
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		SpringBoot能自动适配所有的日志，而且底层使用slf4j+logback的方式记录日志，
+		引入其他框架的时候，只需要把这个框架依赖的日志框架排除掉；
+		 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 			<exclusions>

@@ -8,8 +8,11 @@
 server: 
   port: 8080
 #配置基础路径
-  servlet:
-    context-path: /boot
+#  servlet:
+#    context-path: /boot
+logging:
+  level:
+    com.example.demo: trace
     
 spring:
   profiles:
