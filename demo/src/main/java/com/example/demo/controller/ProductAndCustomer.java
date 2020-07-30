@@ -1,4 +1,4 @@
-package test;
+package com.example.demo.controller;
 
 class Info {
 	private String title;
